@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./carta.module.css";
+import styles from "./Carta.module.css";
 
 type Props = {
   carta: string;

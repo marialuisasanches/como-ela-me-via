@@ -1,108 +1,81 @@
 # Como Ela Me Via
 
-> *Ela nunca disse. Mas demonstrou de outras formas.*
+> _Ela nunca disse. Mas demonstrou de outras formas._
 
-Uma experiência emocional com IA criada para o Dia das Mães.  
-O usuário responde perguntas sobre a mãe e a IA reconstrói o amor que ficou escondido nos gestos do dia a dia — gerando uma carta escrita na voz dela.
+Experiência emocional criada para o Dia das Mães, pensada para quem perdeu a mãe. O usuário responde cinco perguntas sobre ela e a IA transforma essas memórias em uma carta escrita na voz da própria mãe, com tom contido, humilde e verdadeiro.
 
-🔗 **[Acessar o projeto](https://como-ela-me-via.vercel.app)**
+## Visão geral
 
----
-
-## O diferencial
-
-A maioria dos projetos fala *sobre* a mãe.  
-Este fala pelo **olhar dela de volta pra você**.
-
-A IA não inventa — ela traduz.
-
-> "Ela brigava pra você levar casaco."  
-> → *"Talvez esse fosse o jeito dela dizer que tinha medo que algo acontecesse com você."*
-
----
-
-## Telas
-
-| Landing | Perguntas | Processando |
-|--------|-----------|-------------|
-| ![Landing](./screenshots/landing.png) | ![Perguntas](./screenshots/perguntas.png) | ![Processando](./screenshots/processando.png) |
-
-| Envelope | Carta | Gesto Final |
-|----------|-------|-------------|
-| ![Envelope](./screenshots/envelope.png) | ![Carta](./screenshots/carta.png) | ![Gesto](./screenshots/gesto.png) |
-
----
+O projeto foi desenhado para desacelerar a leitura e dar espaço para o silêncio. A proposta não é exagerar na emoção, mas fazer o usuário reconhecer pequenos gestos, hábitos e memórias que talvez só agora façam sentido.
 
 ## Fluxo da experiência
 
-```
-Landing → Perguntas (5 etapas) → Processando → Envelope → Carta → Gesto Final
+```text
+Landing → Perguntas → Processando → Carta → Gesto final
 ```
 
-1. **Landing** — primeira impressão emocional
-2. **Perguntas** — 5 perguntas conversacionais sobre a mãe
-3. **Processando** — a IA interpreta as memórias
-4. **Envelope** — transição cinematográfica antes da carta
-5. **Carta** — gerada palavra por palavra na voz da mãe
-6. **Gesto final** — espaço para o usuário escrever o que nunca disse
+1. **Landing** - abertura emocional da experiência.
+2. **Perguntas** - cinco etapas, uma por vez, com progresso visual.
+3. **Processando** - frases animadas enquanto a Groq gera a carta.
+4. **Carta** - texto aparece palavra por palavra, com foco gradual.
+5. **Gesto final** - espaço para o usuário escrever algo que nunca disse.
 
----
+## O que a IA faz
+
+- Lê as respostas do usuário.
+- Gera uma carta na voz da mãe, em primeira pessoa.
+- Produz uma frase final curta para surgir depois do silêncio.
+- Mantém o tom contido, sem clichês sentimentais.
 
 ## Stack
 
-- **React** + TypeScript
-- **Tailwind CSS**
-- **Framer Motion** — animações
-- **Groq API** — geração da carta com IA
-- **Vercel** — deploy
-
----
-
-## Rodando localmente
-
-```bash
-# clone o repositório
-git clone https://github.com/marialuisasanches/como-ela-me-via.git
-
-# instale as dependências
-cd como-ela-me-via
-npm install
-
-# crie o arquivo de variáveis de ambiente
-cp .env.example .env.local
-# adicione sua chave: VITE_GROQ_API_KEY=sua_chave_aqui
-
-# rode o projeto
-npm run dev
-```
-
----
+- React
+- TypeScript
+- Vite
+- CSS Modules
+- Framer Motion
+- Groq API
 
 ## Variáveis de ambiente
 
+Crie um arquivo `.env.local` na raiz do projeto com a chave da Groq:
+
 ```env
-VITE_GROQ_API_KEY=sua_chave_aqui
+VITE_GROQ_KEY=sua_chave_groq_aqui
 ```
 
-Crie sua chave gratuita em [console.groq.com](https://console.groq.com)
+Você pode copiar o exemplo com:
 
----
+```bash
+cp .env.example .env.local
+```
 
-## Design
+## Como rodar localmente
 
-| Token | Valor |
-|-------|-------|
-| Creme | `#F5F0E8` |
-| Vinho | `#8B1A2F` |
-| Dourado | `#C9A84C` |
-| Preto | `#0A0A0A` |
-| Título | Playfair Display |
-| Carta | Caveat |
-| UI | Inter 300 |
+```bash
+git clone https://github.com/marialuisasanches/como-ela-me-via.git
+cd como-ela-me-via
+npm install
+npm run dev
+```
 
----
+## Screenshots
 
-## Desenvolvido por
+As imagens da apresentação ficam em [screenshots](screenshots) e devem seguir esta ordem:
 
-**Maria Luísa Sanches** — [@maria.sanches](https://discord.com)  
-Hackathon Dia das Mães 2025
+1. [01-landing.png](screenshots/01-landing.png)
+2. [02-perguntas.png](screenshots/02-perguntas.png)
+3. [03-processando.png](screenshots/03-processando.png)
+4. [04-carta.png](screenshots/04-carta.png)
+5. [05-gesto-final.png](screenshots/05-gesto-final.png)
+
+## Observações de design
+
+- Tipografia elegante e legível.
+- Paleta clara, com contraste suave.
+- Animações discretas, sem ruído visual.
+- Estrutura feita para preservar a pausa e o silêncio.
+
+## Autoria
+
+**Maria Luísa Sanches**

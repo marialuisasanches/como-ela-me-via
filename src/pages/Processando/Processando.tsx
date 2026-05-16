@@ -21,11 +21,13 @@ export function Processando({ respostas, onConcluir }: Props) {
   useEffect(() => {
     const intervalo = setInterval(() => {
       setIndice((i) => (i + 1) % frases.length);
-    }, 2200);
+    }, 3500);
     return () => clearInterval(intervalo);
   }, []);
 
   useEffect(() => {
+    let cancelado = false;
+
     async function gerarCarta() {
       const prompt = `
 Você é uma IA que escreve cartas emocionais na voz de uma mãe falecida, endereçadas ao filho ou filha.
@@ -52,26 +54,41 @@ Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações
       `.trim();
 
       try {
-        const response = await fetch("https://api.anthropic.com/v1/messages", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: "claude-sonnet-4-20250514",
-            max_tokens: 1000,
-            messages: [{ role: "user", content: prompt }],
-          }),
-        });
+        const response = await fetch(
+          "https://api.groq.com/openai/v1/chat/completions",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${import.meta.env.VITE_GROQ_KEY}`,
+            },
+            body: JSON.stringify({
+              model: "llama-3.3-70b-versatile",
+              messages: [{ role: "user", content: prompt }],
+              temperature: 0.9,
+            }),
+          },
+        );
 
         const data = await response.json();
-        const carta = data.content?.[0]?.text ?? "";
+        console.log("resposta:", data);
+
+        if (cancelado) return;
+
+        const carta = data.choices?.[0]?.message?.content ?? "";
         onConcluir(carta);
       } catch (err) {
+        if (cancelado) return;
         console.error(err);
         onConcluir("Não foi possível gerar a carta. Tente novamente.");
       }
     }
 
     gerarCarta();
+
+    return () => {
+      cancelado = true;
+    };
   }, []);
 
   return (
@@ -83,7 +100,7 @@ Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9 }}
         >
           {frases[indice]}
         </motion.p>

@@ -80,7 +80,7 @@ acolhimento, não celebração. Nunca infantil, nunca festivo.
 - Framework: React + TypeScript (criado com Vite)
 - Estilo: CSS Modules
 - Animações: Framer Motion
-- IA: Gemini API (Google AI Studio — gratuito, modelo gemini-1.5-flash)
+- IA: Groq API
 - Deploy: Vercel
 - Sem backend, sem banco de dados — respostas ficam em sessionStorage
   e vão direto para o prompt da IA

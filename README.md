@@ -2,53 +2,68 @@
 
 > _Ela nunca disse. Mas demonstrou de outras formas._
 
-Experiência emocional criada para o Dia das Mães, pensada para quem perdeu a mãe. O usuário responde cinco perguntas sobre ela e a IA transforma essas memórias em uma carta escrita na voz da própria mãe, com tom contido, humilde e verdadeiro.
+Experiência emocional com IA criada para o Dia das Mães, pensada para quem perdeu a mãe e passa essa data sentindo falta.
 
-## Visão geral
+O usuário responde cinco perguntas sobre ela. A IA transforma essas memórias em uma carta escrita na voz da própria mãe — contida, humilde e verdadeira. Não é um app de memorial. É uma tradução do amor que ela nunca soube nomear.
 
-O projeto foi desenhado para desacelerar a leitura e dar espaço para o silêncio. A proposta não é exagerar na emoção, mas fazer o usuário reconhecer pequenos gestos, hábitos e memórias que talvez só agora façam sentido.
+---
 
-## Fluxo da experiência
+## A experiência
 
 ```text
 Landing → Perguntas → Processando → Carta → Gesto final
 ```
 
-1. **Landing** - abertura emocional da experiência.
-2. **Perguntas** - cinco etapas, uma por vez, com progresso visual.
-3. **Processando** - frases animadas enquanto a Groq gera a carta.
-4. **Carta** - texto aparece palavra por palavra, com foco gradual.
-5. **Gesto final** - espaço para o usuário escrever algo que nunca disse.
+1. **Landing** — abertura emocional com headline e colagem afetiva
+2. **Perguntas** — cinco etapas em texto livre, uma por vez, com progresso visual
+3. **Processando** — frases animadas enquanto a IA escreve a carta
+4. **Carta** — texto aparece palavra por palavra, em fonte manuscrita, com foco gradual
+5. **Gesto final** — espaço privado para escrever o que nunca foi dito
+
+---
+
+## Galeria
+
+### Landing
+
+![Landing](screenshots/01-landing.png)
+
+### Perguntas
+
+![Perguntas](screenshots/02-perguntas.png)
+
+### Processando
+
+![Processando](screenshots/03-processando.png)
+
+### Carta
+
+![Carta](screenshots/04-carta.png)
+
+### Gesto Final
+
+![Gesto final](screenshots/05-gesto-final.png)
+
+---
 
 ## O que a IA faz
 
-- Lê as respostas do usuário.
-- Gera uma carta na voz da mãe, em primeira pessoa.
-- Produz uma frase final curta para surgir depois do silêncio.
-- Mantém o tom contido, sem clichês sentimentais.
+- Lê as cinco respostas do usuário
+- Gera uma carta na voz da mãe, em primeira pessoa
+- Usa os detalhes específicos de cada memória — nunca é genérica
+- Mantém tom contido, sem clichês sentimentais
+- Nunca afirma emoções diretamente — usa "talvez", "acho que", "não sei se você percebeu"
+
+---
 
 ## Stack
 
-- React
-- TypeScript
-- Vite
+- React + TypeScript + Vite
 - CSS Modules
 - Framer Motion
-- Groq API
+- Groq API — modelo `llama-3.3-70b-versatile`
 
-## Variáveis de ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto com a chave da Groq:
-
-```env
-VITE_GROQ_KEY=sua_chave_groq_aqui
-```
-
-Você pode copiar o exemplo com:
-
-```bash
-cp .env.example .env.local
-```
+---
 
 ## Como rodar localmente
 
@@ -56,26 +71,23 @@ cp .env.example .env.local
 git clone https://github.com/marialuisasanches/como-ela-me-via.git
 cd como-ela-me-via
 npm install
+cp .env.example .env.local
+# adicione sua chave Groq no .env.local
 npm run dev
 ```
 
-## Screenshots
+Acesse `http://localhost:5173`
 
-As imagens da apresentação ficam em [screenshots](screenshots) e devem seguir esta ordem:
+---
 
-1. [01-landing.png](screenshots/01-landing.png)
-2. [02-perguntas.png](screenshots/02-perguntas.png)
-3. [03-processando.png](screenshots/03-processando.png)
-4. [04-carta.png](screenshots/04-carta.png)
-5. [05-gesto-final.png](screenshots/05-gesto-final.png)
+## Variáveis de ambiente
 
-## Observações de design
+```env
+VITE_GROQ_KEY=sua_chave_groq_aqui
+```
 
-- Tipografia elegante e legível.
-- Paleta clara, com contraste suave.
-- Animações discretas, sem ruído visual.
-- Estrutura feita para preservar a pausa e o silêncio.
+---
 
 ## Autoria
 
-**Maria Luísa Sanches**
+Feito por **Maria Luisa Sanches** para o Hackathon Dia das Mães 2026.

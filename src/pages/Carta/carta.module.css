@@ -41,18 +41,14 @@
 }
 
 .fraseFinal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(520px, calc(100vw - 4rem));
-  text-align: center;
-  z-index: 2;
   font-family: var(--font-titulo);
-  font-size: clamp(1.15rem, 2.6vw, 1.75rem);
+  font-size: 1rem;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--vinho);
+  opacity: 0.75;
+  text-align: left;
+  margin-top: -0.5rem;
   pointer-events: none;
 }
 

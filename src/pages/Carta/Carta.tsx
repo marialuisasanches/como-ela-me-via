@@ -77,17 +77,6 @@ export function Carta({ carta, fraseFinal, nome, onReiniciar }: Props) {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
     >
-      {mostrarFraseFinal && fraseFinal.trim().length > 0 && (
-        <motion.p
-          className={styles.fraseFinal}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-        >
-          {fraseFinal}
-        </motion.p>
-      )}
-
       <div className={`${styles.papel} ${nitida ? styles.papelNitido : ""}`}>
         <motion.div
           className={styles.cabecalho}
@@ -114,6 +103,17 @@ export function Carta({ carta, fraseFinal, nome, onReiniciar }: Props) {
           ))}
           {!cartaCompleta && <span className={styles.cursor} />}
         </p>
+
+        {mostrarFraseFinal && fraseFinal.trim().length > 0 && (
+          <motion.p
+            className={styles.fraseFinal}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
+            {fraseFinal}
+          </motion.p>
+        )}
 
         {mostrarGesto && (
           <motion.div

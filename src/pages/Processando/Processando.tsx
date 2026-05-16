@@ -92,7 +92,13 @@ Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações
   }, []);
 
   return (
-    <main className={styles.container}>
+    <motion.main
+      className={styles.container}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
       <AnimatePresence mode="wait">
         <motion.p
           key={indice}
@@ -105,6 +111,6 @@ Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações
           {frases[indice]}
         </motion.p>
       </AnimatePresence>
-    </main>
+    </motion.main>
   );
 }

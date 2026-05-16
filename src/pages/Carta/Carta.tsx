@@ -39,7 +39,13 @@ export function Carta({ carta, nome, onReiniciar }: Props) {
   }
 
   return (
-    <main className={styles.container}>
+    <motion.main
+      className={styles.container}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
       <div className={styles.papel}>
         {/* cabeçalho com nome da mãe */}
         <motion.div
@@ -111,6 +117,6 @@ export function Carta({ carta, nome, onReiniciar }: Props) {
           </motion.div>
         )}
       </div>
-    </main>
+    </motion.main>
   );
 }

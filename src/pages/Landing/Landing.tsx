@@ -1,24 +1,15 @@
+import { motion } from "framer-motion";
 import styles from "./Landing.module.css";
 
 export function Landing({ onStart }: { onStart: () => void }) {
   return (
-    <main className={styles.container}>
-      {/* colagem de elementos visuais */}
-      <div className={styles.colagem}>
-        <div className={styles.colagemItem} style={{ width: 140, height: 100 }}>
-          <img src="/colagem/foto1.jpg" alt="" />
-        </div>
-        <div className={styles.colagemItem} style={{ width: 110, height: 130 }}>
-          <img src="/colagem/bilhete.jpg" alt="" />
-        </div>
-        <div className={styles.colagemItem} style={{ width: 90, height: 90 }}>
-          <img src="/colagem/flor.jpg" alt="" />
-        </div>
-        <div className={styles.colagemItem} style={{ width: 120, height: 80 }}>
-          <img src="/colagem/foto2.jpg" alt="" />
-        </div>
-      </div>
-
+    <motion.main
+      className={styles.container}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
       <div className={styles.conteudo}>
         <p className={styles.pre}>Dia das Mães</p>
         <h1 className={styles.headline}>
@@ -35,6 +26,6 @@ export function Landing({ onStart }: { onStart: () => void }) {
       </div>
 
       <p className={styles.nota}>uma experiência com IA</p>
-    </main>
+    </motion.main>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./Perguntas.module.css";
 
 const perguntas = [
@@ -81,7 +82,13 @@ export function Perguntas({ onConcluir }: Props) {
   }
 
   return (
-    <main className={styles.container}>
+    <motion.main
+      className={styles.container}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
       {/* barra de progresso fina no topo */}
       <div
         className={styles.barraProgresso}
@@ -153,6 +160,6 @@ export function Perguntas({ onConcluir }: Props) {
           </button>
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Landing } from "./pages/Landing/Landing";
 import { Perguntas } from "./pages/Perguntas/Perguntas";
 import { Processando } from "./pages/Processando/Processando";
@@ -29,21 +30,32 @@ function App() {
   }
 
   return (
-    <>
-      {tela === "landing" && <Landing onStart={() => setTela("perguntas")} />}
-      {tela === "perguntas" && <Perguntas onConcluir={handleConcluir} />}
-      {tela === "processando" && (
-        <Processando respostas={respostas} onConcluir={handleCarta} />
+    <AnimatePresence mode="wait">
+      {tela === "landing" && (
+        <Landing key="landing" onStart={() => setTela("perguntas")} />
       )}
-      {tela === "envelope" && <Envelope onAbrir={() => setTela("carta")} />}
+      {tela === "perguntas" && (
+        <Perguntas key="perguntas" onConcluir={handleConcluir} />
+      )}
+      {tela === "processando" && (
+        <Processando
+          key="processando"
+          respostas={respostas}
+          onConcluir={handleCarta}
+        />
+      )}
+      {tela === "envelope" && (
+        <Envelope key="envelope" onAbrir={() => setTela("carta")} />
+      )}
       {tela === "carta" && (
         <Carta
+          key="carta"
           carta={carta}
           nome={respostas[0]}
           onReiniciar={handleReiniciar}
         />
       )}
-    </>
+    </AnimatePresence>
   );
 }
 

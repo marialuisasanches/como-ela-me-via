@@ -91,3 +91,7 @@ VITE_GROQ_KEY=sua_chave_groq_aqui
 ## Autoria
 
 Feito por **Maria Luisa Sanches** para o Hackathon Dia das Mães 2026.
+
+## Licença
+
+Distribuído sob a licença [MIT](LICENSE).

@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# Como Ela Me Via
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> *Ela nunca disse. Mas demonstrou de outras formas.*
 
-Currently, two official plugins are available:
+Uma experiência emocional com IA criada para o Dia das Mães.  
+O usuário responde perguntas sobre a mãe e a IA reconstrói o amor que ficou escondido nos gestos do dia a dia — gerando uma carta escrita na voz dela.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 **[Acessar o projeto](https://como-ela-me-via.vercel.app)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## O diferencial
 
-## Expanding the ESLint configuration
+A maioria dos projetos fala *sobre* a mãe.  
+Este fala pelo **olhar dela de volta pra você**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+A IA não inventa — ela traduz.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+> "Ela brigava pra você levar casaco."  
+> → *"Talvez esse fosse o jeito dela dizer que tinha medo que algo acontecesse com você."*
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Telas
+
+| Landing | Perguntas | Processando |
+|--------|-----------|-------------|
+| ![Landing](./screenshots/landing.png) | ![Perguntas](./screenshots/perguntas.png) | ![Processando](./screenshots/processando.png) |
+
+| Envelope | Carta | Gesto Final |
+|----------|-------|-------------|
+| ![Envelope](./screenshots/envelope.png) | ![Carta](./screenshots/carta.png) | ![Gesto](./screenshots/gesto.png) |
+
+---
+
+## Fluxo da experiência
+
+```
+Landing → Perguntas (5 etapas) → Processando → Envelope → Carta → Gesto Final
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Landing** — primeira impressão emocional
+2. **Perguntas** — 5 perguntas conversacionais sobre a mãe
+3. **Processando** — a IA interpreta as memórias
+4. **Envelope** — transição cinematográfica antes da carta
+5. **Carta** — gerada palavra por palavra na voz da mãe
+6. **Gesto final** — espaço para o usuário escrever o que nunca disse
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Stack
+
+- **React** + TypeScript
+- **Tailwind CSS**
+- **Framer Motion** — animações
+- **Groq API** — geração da carta com IA
+- **Vercel** — deploy
+
+---
+
+## Rodando localmente
+
+```bash
+# clone o repositório
+git clone https://github.com/marialuisasanches/como-ela-me-via.git
+
+# instale as dependências
+cd como-ela-me-via
+npm install
+
+# crie o arquivo de variáveis de ambiente
+cp .env.example .env.local
+# adicione sua chave: VITE_GROQ_API_KEY=sua_chave_aqui
+
+# rode o projeto
+npm run dev
 ```
+
+---
+
+## Variáveis de ambiente
+
+```env
+VITE_GROQ_API_KEY=sua_chave_aqui
+```
+
+Crie sua chave gratuita em [console.groq.com](https://console.groq.com)
+
+---
+
+## Design
+
+| Token | Valor |
+|-------|-------|
+| Creme | `#F5F0E8` |
+| Vinho | `#8B1A2F` |
+| Dourado | `#C9A84C` |
+| Preto | `#0A0A0A` |
+| Título | Playfair Display |
+| Carta | Caveat |
+| UI | Inter 300 |
+
+---
+
+## Desenvolvido por
+
+**Maria Luísa Sanches** — [@maria.sanches](https://discord.com)  
+Hackathon Dia das Mães 2025

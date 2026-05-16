@@ -12,8 +12,40 @@ const frases = [
 
 type Props = {
   respostas: string[];
-  onConcluir: (carta: string) => void;
+  onConcluir: (resultado: { carta: string; fraseFinal: string }) => void;
 };
+
+type RespostaGerada = {
+  carta: string;
+  fraseFinal: string;
+};
+
+function extrairRespostaGerada(conteudo: string): RespostaGerada {
+  const normalizado = conteudo
+    .replace(/```json\s*/gi, "")
+    .replace(/```\s*/g, "")
+    .trim();
+
+  const jsonBruto = normalizado.match(/\{[\s\S]*\}/)?.[0];
+
+  if (jsonBruto) {
+    try {
+      const parsed = JSON.parse(jsonBruto) as Partial<RespostaGerada>;
+      return {
+        carta: typeof parsed.carta === "string" ? parsed.carta : normalizado,
+        fraseFinal:
+          typeof parsed.fraseFinal === "string" ? parsed.fraseFinal : "",
+      };
+    } catch {
+      // Mantém o fallback abaixo.
+    }
+  }
+
+  return {
+    carta: normalizado,
+    fraseFinal: "Ela provavelmente ainda lembrava daquela noite na estrada.",
+  };
+}
 
 export function Processando({ respostas, onConcluir }: Props) {
   const [indice, setIndice] = useState(0);
@@ -50,7 +82,10 @@ Escreva uma carta seguindo TODAS estas regras:
 - Proibido: clichês como "você é minha vida", "te amo mais que tudo"
 - Tom: contido, humilde, verdadeiro, levemente hesitante
 
-Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações.
+Além da carta, gere uma única frase final curta, em tom contido, para aparecer sozinha depois do silêncio.
+
+Responda apenas neste formato JSON válido:
+{ "carta": "...", "fraseFinal": "..." }
       `.trim();
 
       try {
@@ -71,16 +106,18 @@ Escreva apenas a carta. Sem título, sem assinatura formatada, sem explicações
         );
 
         const data = await response.json();
-        console.log("resposta:", data);
 
         if (cancelado) return;
 
-        const carta = data.choices?.[0]?.message?.content ?? "";
-        onConcluir(carta);
+        const conteudo = data.choices?.[0]?.message?.content ?? "";
+        onConcluir(extrairRespostaGerada(conteudo));
       } catch (err) {
         if (cancelado) return;
         console.error(err);
-        onConcluir("Não foi possível gerar a carta. Tente novamente.");
+        onConcluir({
+          carta: "Não foi possível gerar a carta. Tente novamente.",
+          fraseFinal: "Talvez faltasse só mais uma palavra.",
+        });
       }
     }
 

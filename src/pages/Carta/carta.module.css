@@ -31,6 +31,29 @@
   gap: 1.8rem;
   position: relative;
   z-index: 1;
+  filter: blur(8px);
+  transition: filter 2s ease;
+  will-change: filter;
+}
+
+.papelNitido {
+  filter: blur(0);
+}
+
+.fraseFinal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, calc(100vw - 4rem));
+  text-align: center;
+  z-index: 2;
+  font-family: var(--font-titulo);
+  font-size: clamp(1.15rem, 2.6vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--vinho);
+  pointer-events: none;
 }
 
 /* ─── CABEÇALHO ───────────────────────────────────────── */
@@ -207,6 +230,10 @@
 @media (max-width: 480px) {
   .container {
     padding: 3rem 1.5rem 6rem;
+  }
+
+  .fraseFinal {
+    width: calc(100vw - 3rem);
   }
 
   .texto {

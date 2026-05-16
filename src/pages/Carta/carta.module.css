@@ -1,96 +1,186 @@
+/* ─── CARTA ───────────────────────────────────────────── */
+
 .container {
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   background-color: var(--creme);
-  padding: 4rem 2rem;
+  padding: 5rem 2rem 7rem;
+  position: relative;
+  overflow: hidden;
 }
+
+/* textura de papel */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── PAPEL ───────────────────────────────────────────── */
 
 .papel {
   max-width: 580px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── CABEÇALHO ───────────────────────────────────────── */
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.deLabel {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--dourado);
 }
 
 .de {
   font-family: var(--font-carta);
-  font-size: 1.2rem;
-  color: #888;
+  font-size: 1.15rem;
+  color: #999;
+  font-style: italic;
 }
+
+/* ─── CORPO DA CARTA ──────────────────────────────────── */
 
 .texto {
   font-family: var(--font-carta);
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  line-height: 1.9;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  line-height: 2;
   color: var(--preto);
 }
 
 .palavra {
   display: inline;
-  transition: opacity 0.3s ease;
 }
+
+/* ─── SEÇÃO PÓS-CARTA ─────────────────────────────────── */
 
 .gestoContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1.6rem;
+  margin-top: 0.5rem;
 }
 
+/* botão copiar */
+.botaoCopiar {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid #d4cec4;
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #999;
+  cursor: pointer;
+  border-radius: 1px;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.botaoCopiar:hover {
+  border-color: var(--vinho);
+  color: var(--vinho);
+}
+
+/* divisor com ponto central dourado */
+.divisorContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.divisorLinha {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d4cec4, transparent);
+}
+
+.divisorPonto {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--dourado);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* rodapé explicativo */
 .rodape {
   font-family: var(--font-ui);
   font-weight: 300;
-  font-size: 0.8rem;
-  color: #999;
-  line-height: 1.7;
+  font-size: 0.75rem;
+  color: #aaa;
+  line-height: 1.8;
 }
 
-.divisor {
-  width: 40px;
-  height: 1px;
-  background-color: var(--dourado);
-}
-
+/* pergunta do gesto final */
 .gestoTitulo {
   font-family: var(--font-titulo);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: italic;
   color: var(--preto);
+  line-height: 1.4;
 }
 
+/* textarea do gesto */
 .gestoTextarea {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #c0b8a8;
+  border-bottom: 1px solid #d4cec4;
   padding: 0.8rem 0;
   font-family: var(--font-ui);
   font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.8;
   color: var(--preto);
   resize: none;
   outline: none;
+  transition: border-color 0.3s;
+}
+
+.gestoTextarea:focus {
+  border-bottom-color: var(--vinho);
 }
 
 .gestoTextarea::placeholder {
-  color: #bbb;
+  color: #c4bdb2;
+  font-style: italic;
 }
 
+/* botão recomeçar */
 .botaoReiniciar {
   align-self: flex-start;
   background: transparent;
   border: none;
   font-family: var(--font-ui);
   font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #aaa;
+  color: #ccc;
   cursor: pointer;
   padding: 0;
   transition: color 0.2s;
@@ -98,4 +188,28 @@
 
 .botaoReiniciar:hover {
   color: var(--vinho);
+}
+
+/* ─── ANIMAÇÕES ───────────────────────────────────────── */
+
+@keyframes piscar {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── RESPONSIVO ──────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .texto {
+    font-size: 1.2rem;
+  }
 }

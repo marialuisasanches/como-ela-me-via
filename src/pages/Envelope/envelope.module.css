@@ -1,0 +1,138 @@
+/* ─── ENVELOPE ────────────────────────────────────────── */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--creme);
+  position: relative;
+  overflow: hidden;
+}
+
+/* textura de papel */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── CENA CENTRAL ────────────────────────────────────── */
+
+.cena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── ENVELOPE ────────────────────────────────────────── */
+
+.envelope {
+  position: relative;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* sombra de papel sobre mesa */
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+  transition: filter 0.3s;
+}
+
+.envelope:hover {
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.12));
+}
+
+.svgEnvelope {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── CARTA INTERNA ───────────────────────────────────── */
+
+.cartaInterna {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76%;
+  z-index: 2;
+}
+
+.cartaConteudo {
+  background-color: #faf7f2;
+  border: 1px solid #e8e2d8;
+  border-radius: 2px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cartaLinha {
+  height: 1px;
+  width: 100%;
+  background-color: #d4cec4;
+  border-radius: 1px;
+}
+
+/* ─── LACRE ───────────────────────────────────────────── */
+
+.lacre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+  z-index: 3;
+  /* pulsa suavemente para chamar atenção */
+  animation: pulsar 2.5s ease-in-out infinite;
+}
+
+/* ─── INSTRUÇÃO ───────────────────────────────────────── */
+
+.instrucao {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #bbb;
+  /* pisca suavemente */
+  animation: piscar 2.5s ease-in-out infinite;
+}
+
+/* ─── ANIMAÇÕES ───────────────────────────────────────── */
+
+@keyframes pulsar {
+  0%,
+  100% {
+    transform: translate(-50%, -62%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -62%) scale(1.06);
+  }
+}
+
+@keyframes piscar {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ─── RESPONSIVO ──────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .envelope {
+    width: 280px;
+  }
+}

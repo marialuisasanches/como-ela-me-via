@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Landing } from "./pages/Landing/Landing";
 import { Perguntas } from "./pages/Perguntas/Perguntas";
 import { Processando } from "./pages/Processando/Processando";
+import { Envelope } from "./pages/Envelope/Envelope";
 import { Carta } from "./pages/Carta/Carta";
 
-type Tela = "landing" | "perguntas" | "processando" | "carta";
+type Tela = "landing" | "perguntas" | "processando" | "envelope" | "carta";
 
 function App() {
   const [tela, setTela] = useState<Tela>("landing");
@@ -18,7 +19,7 @@ function App() {
 
   function handleCarta(c: string) {
     setCarta(c);
-    setTela("carta");
+    setTela("envelope"); // vai pro envelope antes da carta
   }
 
   function handleReiniciar() {
@@ -34,8 +35,13 @@ function App() {
       {tela === "processando" && (
         <Processando respostas={respostas} onConcluir={handleCarta} />
       )}
+      {tela === "envelope" && <Envelope onAbrir={() => setTela("carta")} />}
       {tela === "carta" && (
-        <Carta carta={carta} onReiniciar={handleReiniciar} />
+        <Carta
+          carta={carta}
+          nome={respostas[0]}
+          onReiniciar={handleReiniciar}
+        />
       )}
     </>
   );

@@ -1,6 +1,6 @@
 # Como Ela Me Via
 
-> _Ela nunca disse. Mas demonstrou de outras formas._
+> *Ela nunca disse. Mas demonstrou de outras formas.*
 
 Experiência emocional com IA criada para o Dia das Mães, pensada para quem perdeu a mãe e passa essa data sentindo falta.
 
@@ -8,11 +8,15 @@ O usuário responde cinco perguntas sobre ela. A IA transforma essas memórias e
 
 ---
 
+## Demo
+
+[![Assistir demo](https://img.youtube.com/vi/ROTy9iSumDw/0.jpg)](https://youtu.be/ROTy9iSumDw)
+
+---
+
 ## A experiência
 
-```text
 Landing → Perguntas → Processando → Carta → Gesto final
-```
 
 1. **Landing** — abertura emocional com headline e colagem afetiva
 2. **Perguntas** — cinco etapas em texto livre, uma por vez, com progresso visual
@@ -25,23 +29,18 @@ Landing → Perguntas → Processando → Carta → Gesto final
 ## Galeria
 
 ### Landing
-
 ![Landing](screenshots/01-landing.png)
 
 ### Perguntas
-
 ![Perguntas](screenshots/02-perguntas.png)
 
 ### Processando
-
 ![Processando](screenshots/03-processando.png)
 
 ### Carta
-
 ![Carta](screenshots/04-carta.png)
 
 ### Gesto Final
-
 ![Gesto final](screenshots/05-gesto-final.png)
 
 ---
@@ -61,37 +60,34 @@ Landing → Perguntas → Processando → Carta → Gesto final
 - React + TypeScript + Vite
 - CSS Modules
 - Framer Motion
-- Groq API — modelo `llama-3.3-70b-versatile`
+- Groq API — modelo llama-3.3-70b-versatile
 
 ---
 
 ## Como rodar localmente
 
-```bash
 git clone https://github.com/marialuisasanches/como-ela-me-via.git
 cd como-ela-me-via
 npm install
 cp .env.example .env.local
-# adicione sua chave Groq no .env.local
 npm run dev
-```
 
-Acesse `http://localhost:5173`
+Acesse http://localhost:5173
 
 ---
 
 ## Variáveis de ambiente
 
-```env
 VITE_GROQ_KEY=sua_chave_groq_aqui
-```
+
+---
+
+## Licença
+
+Distribuído sob a licença [MIT](LICENSE).
 
 ---
 
 ## Autoria
 
-Feito por **Maria Luisa Sanches** para o Hackathon Dia das Mães 2026.
-
-## Licença
-
-Distribuído sob a licença [MIT](LICENSE).
+Feito por **Maria Luísa Sanches** para o Hackathon Dia das Mães 2026.

@@ -5,7 +5,11 @@
 Experiência emocional com IA criada para o Dia das Mães, pensada para quem perdeu a mãe e passa essa data sentindo falta.
 
 O usuário responde cinco perguntas sobre ela. A IA transforma essas memórias em uma carta escrita na voz da própria mãe — contida, humilde e verdadeira. Não é um app de memorial. É uma tradução do amor que ela nunca soube nomear.
+---
 
+## Acesse o projeto
+
+🔗 [como-ela-me-via.vercel.app](https://como-ela-me-via.vercel.app)
 ---
 
 ## Demo

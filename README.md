@@ -1,6 +1,7 @@
 # Como Ela Me Via
 
 > *Ela nunca disse. Mas demonstrou de outras formas.*
+> 🥉 3º lugar — Hackathon Dia das Mães 2026 · Servidor dos Programadores
 
 Experiência emocional com IA criada para o Dia das Mães, pensada para quem perdeu a mãe e passa essa data sentindo falta.
 
